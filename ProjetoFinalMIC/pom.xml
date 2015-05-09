@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- Versão do POM -->
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Grupo -->
+	<groupId>br.com.ProjetoFinalMIC</groupId>
+
+	<!-- Artefato -->
+	<artifactId>ProjetoFinalMIC</artifactId>
+
+	<!-- Versão da Aplicação -->
+	<version>0.0.1-SNAPSHOT</version>
+
+	<!-- Tipo do Empacotamento -->
+	<packaging>war</packaging>
+
+	<!-- Codificação dos caracteres -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<!-- Parâmetros de Execução -->
+	<build>
+		<!-- Nome do Arquivo Empacotado -->
+		<finalName>ProjetoFinalMIC</finalName>
+
+		<!-- Plugins do Projeto -->
+		<plugins>
+			<!-- Plugin do Maven -->
+			<plugin>
+				<!-- Grupo do Plugin -->
+				<groupId>org.apache.maven.plugins</groupId>
+
+				<!-- Artefato do Plugin -->
+				<artifactId>maven-compiler-plugin</artifactId>
+
+				<!-- Versão do Plugin -->
+				<version>3.2</version>
+
+				<!-- Configurações -->
+				<configuration>
+					<!-- Versãdo do JDK -->
+					<source>1.8</source>
+
+					<!-- Versão do JRE -->
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- Dependências -->
+
+	<!-- Hibernate -->
+	<dependencies>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.8.Final</version>
+		</dependency>
+
+		<!-- J Unit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+
+
+		<!-- PostgreSQL -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1201-jdbc41</version>
+		</dependency>
+		 
+	   <!-- Jax-RS -->
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>2.16</version>
+		</dependency>
+		
+		<!-- Interpretador JSON -->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>2.16</version>
+		</dependency>
+		
+	</dependencies>
+</project>

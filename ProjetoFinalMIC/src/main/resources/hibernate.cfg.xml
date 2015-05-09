@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- Configurações da conexão -->
+		<property name="connection.driver_class">org.postgresql.Driver</property>
+		<property name="connection.url">jdbc:postgresql://127.0.0.1:5432/projetoFinalMIC</property>
+		<property name="connection.username">postgres</property>
+		<property name="connection.password">postgres</property>
+
+		<!-- Dialeto SQL -->
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+		<!-- Exibe os comandos SQL -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+
+		<!-- Cria as tabelas -->
+		<property name="hbm2ddl.auto">validate</property>
+		
+		<!-- Mapeamentos -->
+		<mapping class="br.com.fatec.pos.projetoFinalMIC.domain.Aluno" />
+		<mapping class="br.com.fatec.pos.projetoFinalMIC.domain.Avaliacao" />
+		<mapping class="br.com.fatec.pos.projetoFinalMIC.domain.Curso" />
+		<mapping class="br.com.fatec.pos.projetoFinalMIC.domain.Funcionalidade" />
+		<mapping class="br.com.fatec.pos.projetoFinalMIC.domain.Horario" />
+		<mapping class="br.com.fatec.pos.projetoFinalMIC.domain.Matricula" />
+		<mapping class="br.com.fatec.pos.projetoFinalMIC.domain.Navegacao" />
+		<mapping class="br.com.fatec.pos.projetoFinalMIC.domain.Professor" />
+		<mapping class="br.com.fatec.pos.projetoFinalMIC.domain.Turma" />
+		<mapping class="br.com.fatec.pos.projetoFinalMIC.domain.Usuario" />
+	</session-factory>
+</hibernate-configuration>
