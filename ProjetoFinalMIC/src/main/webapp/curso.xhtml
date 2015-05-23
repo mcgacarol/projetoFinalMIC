@@ -1,1 +1,74 @@
-//CAROL
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Projeto MIC</title>
+</h:head>
+<h:body>
+	<ui:include src="index.xhtml"/>
+	<div class="bg-content">
+		<div class="content">
+			<h:form id="formulario">
+				<p:growl id="mensagem" />
+					<h3>Manter Cursos</h3>
+					<h:panelGrid columns="2" id="painelDados">
+						<p:outputLabel value="Código:" />
+						<p:inputText size="10" readonly="true" value="#{cursoBean.curso.id}" />
+			
+						<p:outputLabel value="Nome" />
+						<p:inputText size="50" maxlength="50" value="#{cursoBean.curso.nome}" />
+						
+						<p:outputLabel value="Carga Horária" />
+						<p:inputText size="10" maxlength="10" value="#{cursoBean.curso.cargaHoraria}" />
+						
+						<p:outputLabel value="Situação" />
+						<p:selectOneRadio id="console" value="#{cursoBean.curso.situacao}">
+				            <f:selectItem itemLabel="Ativo" itemValue="#{cursoBean.situacaoAtivo}" />
+				            <f:selectItem itemLabel="Inativo" itemValue="#{cursoBean.situacaoInativo}" />
+			        	</p:selectOneRadio>
+			        
+					</h:panelGrid>
+			
+					<h:panelGrid columns="4">
+						<p:commandButton value="Salvar" actionListener="#{cursoBean.salvar}" update=":formulario:mensagem :formulario:painelDados :formulario:tabela" />
+						<p:commandButton value="Limpar" actionListener="#{cursoBean.iniciar}" update=":formulario:mensagem :formulario:painelDados"/>
+						<p:commandButton value="Excluir" actionListener="#{cursoBean.excluir}" update=":formulario:mensagem :formulario:painelDados :formulario:tabela"  />
+						<p:commandButton value="Voltar" action="index.xhtml"/>
+					</h:panelGrid>
+			
+					<br/>
+			
+					<p:dataTable emptyMessage="Nenhum registro encontrado." id="tabela"
+						paginator="true" value="#{cursoBean.cursos}" var="cursor" rows="4" sortBy="#{cursor.nome}">
+						<p:column headerText="Código"  sortBy="#{cursor.id}" style="width:12%;">
+							<center>
+								<h:outputText value="#{cursor.id}" />
+							</center>
+						</p:column>
+						<p:column headerText="Nome"  sortBy="#{cursor.nome}">
+							<h:outputText value="#{cursor.nome}" />
+						</p:column>
+						<p:column headerText="Carga Horária"  sortBy="#{cursor.cargaHoraria}">
+							<h:outputText value="#{cursor.cargaHoraria}" />
+						</p:column>
+						<p:column headerText="Situação"  sortBy="#{cursor.situacao.descricao}">
+							<h:outputText value="#{cursor.situacao.descricao}" />
+						</p:column>
+						<p:column headerText="Detalhes" style="width:12%;">
+							<center>
+								<p:commandButton icon="ui-icon-search" update=":formulario:painelDados">
+									<f:setPropertyActionListener target="#{cursoBean.curso}" value="#{cursor}"/>
+								</p:commandButton>
+							</center>
+						</p:column> 	
+					</p:dataTable>
+				</h:form>
+			</div>
+	</div>
+</h:body>
+</html>

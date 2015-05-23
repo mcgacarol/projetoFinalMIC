@@ -10,54 +10,49 @@
 	<title>Projeto MIC</title>
 </h:head>
 <h:body>
-	<h:form id="formulario">
+	<ui:include src="index.xhtml"/>
+	<div class="bg-content">
+		<div class="content">
+			<h:form id="formulario">
+				<p:growl id="mensagem" />
+				<h3>Manter Horários</h3>
+				<h:panelGrid columns="2" id="painelDados">
+					<p:outputLabel value="Código:" />
+					<p:inputText size="10" readonly="true" value="#{horarioBean.horario.id}" />
 		
-		<h1  style="text-align: center;">Projeto MIC</h1>
-		<p:menubar model="">
-			<p:submenu label="Cadastros" icon="ui-icon-document">
-				<p:menuitem value="Manter Horários" url="horario.xhtml" icon="ui-icon-disk" />
-			</p:submenu>
-			<p:menuitem value="Sair" url="inicio.xhtml" icon="ui-icon-close"/>
-		</p:menubar>
+					<p:outputLabel value="Descrição:" />
+					<p:inputText size="50" maxlength="50" value="#{horarioBean.horario.descricao}" />
+				</h:panelGrid>
 		
-		<p:growl id="mensagem" />
-		<br/>
-		<h3>Manter Horários</h3>
-		<h:panelGrid columns="2" id="painelDados">
-			<p:outputLabel value="Código:" />
-			<p:inputText size="10" readonly="true" value="#{horarioBean.horario.id}" />
-
-			<p:outputLabel value="Descrição:" />
-			<p:inputText size="50" maxlength="50" value="#{horarioBean.horario.descricao}" />
-		</h:panelGrid>
-
-		<h:panelGrid columns="4">
-			<p:commandButton value="Salvar" actionListener="#{horarioBean.salvar}" update=":formulario:mensagem :formulario:painelDados :formulario:tabela" />
-			<p:commandButton value="Limpar" actionListener="#{horarioBean.iniciar}" update=":formulario:mensagem :formulario:painelDados"/>
-			<p:commandButton value="Excluir" actionListener="#{horarioBean.excluir}" update=":formulario:mensagem :formulario:painelDados :formulario:tabela"  />
-			<p:commandButton value="Voltar" action="index.xhtml"/>
-		</h:panelGrid>
-
-		<br/>
-
-		<p:dataTable emptyMessage="Nenhum registro encontrado." id="tabela"
-			paginator="true" value="#{horarioBean.horarios}" var="cursor" rows="4" sortBy="#{cursor.descricao}">
-			<p:column headerText="Código"  sortBy="#{cursor.id}" style="width:12%;">
-				<center>
-					<h:outputText value="#{cursor.id}" />
-				</center>
-			</p:column>
-			<p:column headerText="Descrição"  sortBy="#{cursor.descricao}">
-				<h:outputText value="#{cursor.descricao}" />
-			</p:column>
-			<p:column headerText="Detalhes" style="width:12%;">
-				<center>
-					<p:commandButton icon="ui-icon-search" update=":formulario:painelDados">
-						<f:setPropertyActionListener target="#{horarioBean.horario}" value="#{cursor}"/>
-					</p:commandButton>
-				</center>
-			</p:column> 	
-		</p:dataTable>
-	</h:form>
+				<h:panelGrid columns="4">
+					<p:commandButton value="Salvar" actionListener="#{horarioBean.salvar}" update=":formulario:mensagem :formulario:painelDados :formulario:tabela" />
+					<p:commandButton value="Limpar" actionListener="#{horarioBean.iniciar}" update=":formulario:mensagem :formulario:painelDados"/>
+					<p:commandButton value="Excluir" actionListener="#{horarioBean.excluir}" update=":formulario:mensagem :formulario:painelDados :formulario:tabela"  />
+					<p:commandButton value="Voltar" action="index.xhtml"/>
+				</h:panelGrid>
+		
+				<br/>
+		
+				<p:dataTable emptyMessage="Nenhum registro encontrado." id="tabela"
+					paginator="true" value="#{horarioBean.horarios}" var="cursor" rows="4" sortBy="#{cursor.descricao}">
+					<p:column headerText="Código"  sortBy="#{cursor.id}" style="width:12%;">
+						<center>
+							<h:outputText value="#{cursor.id}" />
+						</center>
+					</p:column>
+					<p:column headerText="Descrição"  sortBy="#{cursor.descricao}">
+						<h:outputText value="#{cursor.descricao}" />
+					</p:column>
+					<p:column headerText="Detalhes" style="width:12%;">
+						<center>
+							<p:commandButton icon="ui-icon-search" update=":formulario:painelDados">
+								<f:setPropertyActionListener target="#{horarioBean.horario}" value="#{cursor}"/>
+							</p:commandButton>
+						</center>
+					</p:column> 	
+				</p:dataTable>
+			</h:form>
+		</div>
+	</div>
 </h:body>
 </html>

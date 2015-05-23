@@ -155,4 +155,25 @@ public class UsuarioDAO {
 		}
 		return disponivel;
 	}
+
+	public Usuario buscarUsuario(Usuario usuario) {
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		Usuario usuarioObtido = new Usuario();
+		
+		try {
+			Criteria criteria = sessao.createCriteria(Usuario.class);
+			if(!usuario.getLogin().equals("")){
+				criteria.add(Restrictions.like("login", usuario.getLogin()));
+			}
+			if(!usuario.getSenha().equals("")){
+				criteria.add(Restrictions.eq("senha", usuario.getSenha()));
+			}
+			usuarioObtido = (Usuario) criteria.uniqueResult();
+		}  catch (RuntimeException runtimeException) {
+			throw runtimeException;
+		} finally {
+			sessao.close();
+		}
+		return usuarioObtido;
+	}
 }

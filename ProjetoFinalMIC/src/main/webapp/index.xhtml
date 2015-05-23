@@ -5,20 +5,35 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Projeto MIC</title>
-</h:head>
-<h:body>
-	<h:form id="formulario">
-		<p:growl id="mensagem" />
-			<h1  style="text-align: center;">Projeto MIC</h1>
-		<p:menubar model="">
-			<p:submenu label="Cadastros" icon="ui-icon-document">
-				<p:menuitem value="Manter Horários" url="horario.xhtml" icon="ui-icon-disk" />
-			</p:submenu>
-			<p:menuitem value="Sair" url="inicio.xhtml" icon="ui-icon-close"/>
-		</p:menubar>
-	</h:form>
-</h:body>
+	<h:head>
+		<meta charset="UTF-8" />
+		<title>Projeto MIC</title>
+	
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="font-awesome.css" />
+		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css' />
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+	
+	</h:head>
+	<h:body>
+		<div class="bg-header">
+			<div class="header">
+				<div class="logo">
+					<img src="logo.png" /> | Projeto MIC 
+				</div>
+			</div>
+			<div class="message">
+				<p:growl id="mensagem" />
+			</div>
+		</div>
+		<div class="menu">
+			<ul>
+				<li><a href="index.xhtml"> Página Inicial </a></li>
+				<li><a href="horario.xhtml"> Horários </a></li>
+				<li><a href="funcionalidade.xhtml"> Funcionalidades </a></li>
+				<li><a href="curso.xhtml"> Cursos </a></li>
+				<li><a href="inicio.xhtml"> Sair </a></li>
+			</ul>
+		</div>
+	</h:body>
 </html>
