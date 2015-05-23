@@ -52,30 +52,69 @@
 
 	<!-- Dependências -->
 
-	<!-- Hibernate -->
+	<!-- Repositórios -->
+	<repositories>
+		<!-- PrimeFaces -->
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>sam</layout>
+		</repository>
+	</repositories>
+
+	<!-- Dependências -->
 	<dependencies>
+		<!-- Framework de Persistência -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>4.3.8.Final</version>
 		</dependency>
 
-		<!-- J Unit -->
+		<!-- Driver JDBC -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1201-jdbc41</version>
+		</dependency>
+
+		<!-- Framework de Testes -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
 
-
-		<!-- PostgreSQL -->
+		<!-- Framework MVC -->
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.4-1201-jdbc41</version>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>2.2.10</version>
 		</dependency>
-		 
-	   <!-- Jax-RS -->
+
+		<!-- Utilitários para JSF -->
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>omnifaces</artifactId>
+			<version>1.10</version>
+		</dependency>
+
+		<!-- Framework de Componentes -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>5.1</version>
+		</dependency>
+
+		<!-- Temas do PrimeFaces -->
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+
+		<!-- WebService -->
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-servlet</artifactId>
@@ -88,6 +127,5 @@
 			<artifactId>jersey-media-json-jackson</artifactId>
 			<version>2.16</version>
 		</dependency>
-		
 	</dependencies>
 </project>
