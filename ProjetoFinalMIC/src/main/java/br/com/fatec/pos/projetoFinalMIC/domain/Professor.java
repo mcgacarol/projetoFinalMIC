@@ -25,11 +25,8 @@ public class Professor implements Serializable{
 	@Column(name="email", nullable=false, length=100)
 	private String email;
 	
-	@Column(name="dddTelefone", nullable=false, length=2)
-	private Integer dddTelefone;
-	
-	@Column(name="telefone", nullable=false, length=9)
-	private Integer telefone;
+	@Column(name="telefone", nullable=false, length=14)
+	private String telefone;
 	
 	@Column(name="logradouro", nullable=false, length=100)
 	private String logradouro;
@@ -49,8 +46,8 @@ public class Professor implements Serializable{
 	@Column(name="uf", nullable=false, length=2)
 	private String uf;
 	
-	@Column(name="cep", nullable=false, length=2)
-	private Integer cep;
+	@Column(name="cep", nullable=false, length=10)
+	private String cep;
 	
 	@Column(name="indSituacao", nullable=false)
 	private Status situacao; 
@@ -76,16 +73,10 @@ public class Professor implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Integer getDddTelefone() {
-		return dddTelefone;
-	}
-	public void setDddTelefone(Integer dddTelefone) {
-		this.dddTelefone = dddTelefone;
-	}
-	public Integer getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	public String getLogradouro() {
@@ -124,10 +115,10 @@ public class Professor implements Serializable{
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
-	public Integer getCep() {
+	public String getCep() {
 		return cep;
 	}
-	public void setCep(Integer cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 	public Status getSituacao() {
@@ -143,14 +134,37 @@ public class Professor implements Serializable{
 		this.atuaComEducacaoEspecial = atuaComEducacaoEspecial;
 	}
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Professor other = (Professor) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+	@Override
 	public String toString() {
 		return "Professor [id=" + id + ", nome=" + nome + ", email=" + email
-				+ ", dddTelefone=" + dddTelefone + ", telefone=" + telefone
+				+ ", telefone=" + telefone
 				+ ", logradouro=" + logradouro + ", numero=" + numero
 				+ ", complemento=" + complemento + ", bairro=" + bairro
 				+ ", municipio=" + municipio + ", uf=" + uf + ", cep=" + cep
-				+ ", situacao=" + situacao.getDescricao() + ", atuaComEducacaoEspecial="
-				+ atuaComEducacaoEspecial.getDescricao() + "] \n";
+				+ ", situacao=" + situacao + ", atuaComEducacaoEspecial="
+				+ atuaComEducacaoEspecial + "]";
 	}
 	
 	

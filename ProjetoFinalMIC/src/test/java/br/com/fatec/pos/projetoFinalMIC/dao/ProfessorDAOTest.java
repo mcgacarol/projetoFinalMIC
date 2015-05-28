@@ -18,32 +18,30 @@ public class ProfessorDAOTest {
 		Professor professor = new Professor();
 		professor.setAtuaComEducacaoEspecial(AtuaComEducacaoEspecial.SIM);
 		professor.setBairro("Centro");
-		professor.setCep(19950000);
+		professor.setCep("19950-000");
 		professor.setComplemento("casa");
-		professor.setDddTelefone(13);
 		professor.setEmail("professor@email.com.br");
 		professor.setLogradouro("Rua José Pereira");
 		professor.setMunicipio("Ourinhos");
 		professor.setNome("Marli Souza");
 		professor.setNumero(20);
 		professor.setSituacao(Status.ATIVO);
-		professor.setTelefone(92231144);
+		professor.setTelefone("92231144");
 		professor.setUf("SP");
 		dao.salvar(professor);
 		
 		professor = new Professor();
 		professor.setAtuaComEducacaoEspecial(AtuaComEducacaoEspecial.NAO);
 		professor.setBairro("Centro");
-		professor.setCep(19950000);
+		professor.setCep("19950-000");
 		professor.setComplemento("casa");
-		professor.setDddTelefone(13);
 		professor.setEmail("professor_teste@email.com.br");
 		professor.setLogradouro("Rua Jacinto Sá");
 		professor.setMunicipio("Ourinhos");
 		professor.setNome("José da Silva");
 		professor.setNumero(20);
 		professor.setSituacao(Status.ATIVO);
-		professor.setTelefone(345345454);
+		professor.setTelefone("345345454");
 		professor.setUf("SP");
 		dao.salvar(professor);
 		

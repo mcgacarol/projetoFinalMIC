@@ -184,17 +184,41 @@ public class Aluno implements Serializable{
 		public void setSituacao(Status situacao) {
 			this.situacao = situacao;
 		}
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((id == null) ? 0 : id.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Aluno other = (Aluno) obj;
+			if (id == null) {
+				if (other.id != null)
+					return false;
+			} else if (!id.equals(other.id))
+				return false;
+			return true;
+		}
 
 		@Override
 		public String toString() {
 			return "Aluno [id=" + id + ", nome=" + nome + ", filiacao="
 					+ filiacao + ", dataNascimento=" + dataNascimento
-					+ ", especial=" + especial.getDescricao() + ", dddTelefone=" + dddTelefone
+					+ ", especial=" + especial + ", dddTelefone=" + dddTelefone
 					+ ", telefone=" + telefone + ", logradouro=" + logradouro
 					+ ", numero=" + numero + ", complemento=" + complemento
 					+ ", bairro=" + bairro + ", municipio=" + municipio
-					+ ", cep=" + cep + ", uf=" + uf + ", situacao=" + situacao.getDescricao()
-					+ "] \n";
+					+ ", cep=" + cep + ", uf=" + uf + ", situacao=" + situacao
+					+ "]";
 		}
 		
 		

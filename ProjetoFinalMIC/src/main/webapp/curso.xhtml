@@ -21,10 +21,13 @@
 						<p:inputText size="10" readonly="true" value="#{cursoBean.curso.id}" />
 			
 						<p:outputLabel value="Nome" />
-						<p:inputText size="50" maxlength="50" value="#{cursoBean.curso.nome}" />
+						<p:inputText size="50" maxlength="50" value="#{cursoBean.curso.nome}"
+						required="true"
+						requiredMessage="O campo Nome é obrigatório" />
 						
 						<p:outputLabel value="Carga Horária" />
-						<p:inputText size="10" maxlength="10" value="#{cursoBean.curso.cargaHoraria}" />
+						<p:inputMask size="10" maxlength="10" value="#{cursoBean.curso.cargaHoraria}" mask="9?9999"
+						required="true" requiredMessage="O campo Carga Horária é obrigatório" />
 						
 						<p:outputLabel value="Situação" />
 						<p:selectOneRadio id="console" value="#{cursoBean.curso.situacao}">
@@ -61,7 +64,7 @@
 						</p:column>
 						<p:column headerText="Detalhes" style="width:12%;">
 							<center>
-								<p:commandButton icon="ui-icon-search" update=":formulario:painelDados">
+								<p:commandButton icon="ui-icon-search" update=":formulario:painelDados"  process="@this">
 									<f:setPropertyActionListener target="#{cursoBean.curso}" value="#{cursor}"/>
 								</p:commandButton>
 							</center>

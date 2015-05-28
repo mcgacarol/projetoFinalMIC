@@ -21,7 +21,9 @@
 					<p:inputText size="10" readonly="true" value="#{funcionalidadeBean.funcionalidade.id}" />
 		
 					<p:outputLabel value="Descrição:" />
-					<p:inputText size="50" maxlength="50" value="#{funcionalidadeBean.funcionalidade.descricao}" />
+					<p:inputText size="50" maxlength="50" value="#{funcionalidadeBean.funcionalidade.descricao}" 
+					required="true"
+					requiredMessage="O campo Descrição é obrigatório" />
 				</h:panelGrid>
 		
 				<h:panelGrid columns="4">
@@ -45,7 +47,7 @@
 					</p:column>
 					<p:column headerText="Detalhes" style="width:12%;">
 						<center>
-							<p:commandButton icon="ui-icon-search" update=":formulario:painelDados">
+							<p:commandButton icon="ui-icon-search" update=":formulario:painelDados"  process="@this">
 								<f:setPropertyActionListener target="#{funcionalidadeBean.funcionalidade}" value="#{cursor}"/>
 							</p:commandButton>
 						</center>
