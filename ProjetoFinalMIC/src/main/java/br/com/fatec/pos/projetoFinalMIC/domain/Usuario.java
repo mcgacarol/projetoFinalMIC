@@ -25,6 +25,12 @@ public class Usuario implements Serializable{
 	@Column(name="senha", nullable=false, length=100)
 	private String senha;
 	
+	@Column(name="nomeUsuario", nullable=false, length=100)
+	private String nomeUsuario;
+	
+	@Column(name="indPermissao", nullable=false, length=20)
+	private PermissaoUsuario permissao;
+	
 	@Column(name="indSituacao", nullable=false)
 	private Status situacao; 
 
@@ -60,6 +66,22 @@ public class Usuario implements Serializable{
 		this.situacao = situacao;
 	}
 	
+	public String getNomeUsuario() {
+		return nomeUsuario;
+	}
+
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
+	}
+
+	public PermissaoUsuario getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(PermissaoUsuario permissao) {
+		this.permissao = permissao;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

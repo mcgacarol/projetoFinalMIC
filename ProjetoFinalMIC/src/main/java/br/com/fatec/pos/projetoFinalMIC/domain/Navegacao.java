@@ -22,20 +22,19 @@ public class Navegacao implements Serializable{
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "navegacaoSequence")
 	private Integer id;
 	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(nullable = false)
-	private Usuario usuario;
+	@Column(name="indPermissao", nullable=false, length=20)
+	private PermissaoUsuario permissao;
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(nullable = false)
 	private Funcionalidade funcionalidade;
 
-	public Usuario getUsuario() {
-		return usuario;
+	public PermissaoUsuario getPermissao() {
+		return permissao;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setPermissao(PermissaoUsuario permissao) {
+		this.permissao = permissao;
 	}
 
 	public Funcionalidade getFuncionalidade() {
@@ -81,9 +80,11 @@ public class Navegacao implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Navegacao [id=" + id + ", usuario=" + usuario
+		return "Navegacao [id=" + id + ", permissao=" + permissao
 				+ ", funcionalidade=" + funcionalidade + "]";
 	}
+
+	
 
 	
 }

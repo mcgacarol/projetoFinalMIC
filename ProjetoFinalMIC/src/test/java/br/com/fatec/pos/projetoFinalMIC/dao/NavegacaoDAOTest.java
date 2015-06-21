@@ -5,9 +5,6 @@ import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import br.com.fatec.pos.projetoFinalMIC.dao.FuncionalidadeDAO;
-import br.com.fatec.pos.projetoFinalMIC.dao.NavegacaoDAO;
-import br.com.fatec.pos.projetoFinalMIC.dao.UsuarioDAO;
 import br.com.fatec.pos.projetoFinalMIC.domain.Navegacao;
 
 public class NavegacaoDAOTest {
@@ -17,22 +14,22 @@ public class NavegacaoDAOTest {
 		
 		Navegacao navegacao = new Navegacao();
 		navegacao.setFuncionalidade(new FuncionalidadeDAO().buscarPorCodigo(1));
-		navegacao.setUsuario(new UsuarioDAO().buscarPorCodigo(1));
+		//navegacao.setUsuario(new UsuarioDAO().buscarPorCodigo(1));
 		dao.salvar(navegacao);
 		
 		navegacao = new Navegacao();
 		navegacao.setFuncionalidade(new FuncionalidadeDAO().buscarPorCodigo(2));
-		navegacao.setUsuario(new UsuarioDAO().buscarPorCodigo(1));
+		//navegacao.setUsuario(new UsuarioDAO().buscarPorCodigo(1));
 		dao.salvar(navegacao);
 		
 		navegacao = new Navegacao();
 		navegacao.setFuncionalidade(new FuncionalidadeDAO().buscarPorCodigo(3));
-		navegacao.setUsuario(new UsuarioDAO().buscarPorCodigo(1));
+		//navegacao.setUsuario(new UsuarioDAO().buscarPorCodigo(1));
 		dao.salvar(navegacao);
 		
 		navegacao = new Navegacao();
 		navegacao.setFuncionalidade(new FuncionalidadeDAO().buscarPorCodigo(1));
-		navegacao.setUsuario(new UsuarioDAO().buscarPorCodigo(2));
+		//navegacao.setUsuario(new UsuarioDAO().buscarPorCodigo(2));
 		dao.salvar(navegacao);
 		
 		

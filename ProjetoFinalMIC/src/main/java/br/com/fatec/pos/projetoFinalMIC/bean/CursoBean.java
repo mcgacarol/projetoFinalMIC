@@ -5,12 +5,18 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.servlet.http.HttpSession;
 
 import org.omnifaces.util.Messages;
 
 import br.com.fatec.pos.projetoFinalMIC.dao.CursoDAO;
+import br.com.fatec.pos.projetoFinalMIC.dao.FuncionalidadeDAO;
+import br.com.fatec.pos.projetoFinalMIC.dao.NavegacaoDAO;
 import br.com.fatec.pos.projetoFinalMIC.domain.Curso;
+import br.com.fatec.pos.projetoFinalMIC.domain.Funcionalidade;
+import br.com.fatec.pos.projetoFinalMIC.domain.Navegacao;
 import br.com.fatec.pos.projetoFinalMIC.domain.Status;
+import br.com.fatec.pos.projetoFinalMIC.domain.Usuario;
 
 @ManagedBean
 @ViewScoped
@@ -42,12 +48,47 @@ public class CursoBean {
 
 	@PostConstruct
 	public void iniciar() {
-		curso = new Curso();
-		curso.setSituacao(getSituacaoAtivo());
-		CursoDAO cursoDAO = new CursoDAO();
-		cursos = cursoDAO.listar();
+		HttpSession session = SessionBean.getSession();
+		if (session.getAttribute("usuarioLogado") != null) {
+			Usuario usuarioNaSessao = (Usuario) session.getAttribute("usuarioLogado");
+			Funcionalidade funcionalidade = new FuncionalidadeDAO().obterFuncionalidadePorDescricao("Manter Cursos");
+			if(usuarioNaSessao != null && funcionalidade != null){
+				Navegacao navegacaoAcesso = new NavegacaoDAO().obterNavegacaoPorUsuarioFuncionalidade(usuarioNaSessao.getPermissao(), funcionalidade);
+				if(navegacaoAcesso != null){
+					curso = new Curso();
+					curso.setSituacao(getSituacaoAtivo());
+					CursoDAO cursoDAO = new CursoDAO();
+					cursos = cursoDAO.listar();
+				} 
+			}
+		}
 	}
 
+	public String acessarTela(){
+		HttpSession session = SessionBean.getSession();
+		if (session.getAttribute("usuarioLogado") != null) {
+			Usuario usuarioNaSessao = (Usuario) session.getAttribute("usuarioLogado");
+			Funcionalidade funcionalidade = new FuncionalidadeDAO().obterFuncionalidadePorDescricao("Manter Cursos");
+			if(usuarioNaSessao != null && funcionalidade != null){
+				Navegacao navegacaoAcesso = new NavegacaoDAO().obterNavegacaoPorUsuarioFuncionalidade(usuarioNaSessao.getPermissao(), funcionalidade);
+				if(navegacaoAcesso != null){
+					curso = new Curso();
+					curso.setSituacao(getSituacaoAtivo());
+					CursoDAO cursoDAO = new CursoDAO();
+					cursos = cursoDAO.listar();
+					return "curso.xhtml";
+				} else {
+					Messages.addGlobalInfo("Você não possui permissão para acessar esta funcionalidade");
+					return "index.html";
+				}
+			}else{
+				return "inicio.xhtml";
+			}
+		}else{
+			return "inicio.xhtml";
+		}
+	}
+	
 	public Curso getCurso() {
 		return curso;
 	}
@@ -81,4 +122,3 @@ public class CursoBean {
 	}
 
 }
-

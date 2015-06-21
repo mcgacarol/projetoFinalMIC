@@ -11,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 
 import br.com.fatec.pos.projetoFinalMIC.domain.Funcionalidade;
 import br.com.fatec.pos.projetoFinalMIC.domain.Navegacao;
+import br.com.fatec.pos.projetoFinalMIC.domain.PermissaoUsuario;
 import br.com.fatec.pos.projetoFinalMIC.util.HibernateUtil;
 
 public class NavegacaoDAO {
@@ -179,5 +180,28 @@ public class NavegacaoDAO {
 			sessao.close();
 		}
 		return navegacaoValida;
+	}
+
+	public Navegacao obterNavegacaoPorUsuarioFuncionalidade(PermissaoUsuario permissaoUsuario,
+			Funcionalidade funcionalidade) {
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		Navegacao navegacao = new Navegacao();
+		
+		try {
+			Criteria criteria = sessao.createCriteria(Navegacao.class, "navegacao");
+			
+			if(permissaoUsuario != null){
+				criteria.add(Restrictions.eq("navegacao.permissao", permissaoUsuario));
+			}
+			if(funcionalidade != null){
+				criteria.add(Restrictions.eq("navegacao.funcionalidade", funcionalidade));
+			}
+			navegacao = (Navegacao) criteria.uniqueResult();
+		} catch (RuntimeException runtimeException) {
+			throw runtimeException;
+		} finally {
+			sessao.close();
+		}
+		return navegacao;
 	}
 }

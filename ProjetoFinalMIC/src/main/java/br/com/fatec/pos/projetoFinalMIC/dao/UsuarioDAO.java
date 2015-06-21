@@ -89,7 +89,6 @@ public class UsuarioDAO {
 		} finally {
 			sessao.close();
 		}
-		
 		return usuarios;
 	}
 	

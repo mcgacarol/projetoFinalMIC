@@ -6,6 +6,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.fatec.pos.projetoFinalMIC.dao.UsuarioDAO;
+import br.com.fatec.pos.projetoFinalMIC.domain.PermissaoUsuario;
 import br.com.fatec.pos.projetoFinalMIC.domain.Status;
 import br.com.fatec.pos.projetoFinalMIC.domain.Usuario;
 
@@ -19,29 +20,37 @@ public class UsuarioDAOTest {
 		usuario.setLogin("admin");
 		usuario.setSenha("admin");
 		usuario.setSituacao(Status.ATIVO);
+		usuario.setPermissao(PermissaoUsuario.ADMINISTRADOR);
+		usuario.setNomeUsuario("Administrador");
 		dao.salvar(usuario);
 		
 		usuario = new Usuario();
 		usuario.setLogin("secretaria");
 		usuario.setSenha("secretaria");
 		usuario.setSituacao(Status.ATIVO);
+		usuario.setPermissao(PermissaoUsuario.SECRETARIA);
+		usuario.setNomeUsuario("Secretaria");
 		dao.salvar(usuario);
 		
 		usuario = new Usuario();
 		usuario.setLogin("coordenador");
 		usuario.setSenha("coordenador");
 		usuario.setSituacao(Status.ATIVO);
+		usuario.setPermissao(PermissaoUsuario.COORDENADOR);
+		usuario.setNomeUsuario("Coordenador");
 		dao.salvar(usuario);
 		
 		usuario = new Usuario();
 		usuario.setLogin("professor");
 		usuario.setSenha("professor");
 		usuario.setSituacao(Status.ATIVO);
+		usuario.setPermissao(PermissaoUsuario.PROFESSOR);
+		usuario.setNomeUsuario("Professor");
 		dao.salvar(usuario);
 		
 	}
 
-	@Test
+	
 	@Ignore
 	public void listar() {
 		UsuarioDAO dao = new UsuarioDAO();
@@ -49,7 +58,6 @@ public class UsuarioDAOTest {
 		System.out.println(usuarios);
 	}
 
-	@Test
 	@Ignore
 	public void buscar() {
 		UsuarioDAO dao = new UsuarioDAO();
@@ -57,7 +65,6 @@ public class UsuarioDAOTest {
 		System.out.println(usuario);
 	}
 
-	@Test
 	@Ignore
 	public void editar() {
 		UsuarioDAO dao = new UsuarioDAO();
@@ -66,7 +73,6 @@ public class UsuarioDAOTest {
 		dao.editar(usuario);
 	}
 
-	@Test
 	@Ignore
 	public void excluir() {
 		UsuarioDAO dao = new UsuarioDAO();

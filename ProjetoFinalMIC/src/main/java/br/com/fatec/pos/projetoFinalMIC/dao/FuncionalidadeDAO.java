@@ -1,7 +1,6 @@
 
 package br.com.fatec.pos.projetoFinalMIC.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -111,22 +110,21 @@ public class FuncionalidadeDAO  {
 		return funcionalidade;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Funcionalidade> listarFuncionalidadesPorDescricao(String descricao) {
+	public Funcionalidade obterFuncionalidadePorDescricao(String descricao) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
-		List<Funcionalidade> listaFuncionalidades= new ArrayList<Funcionalidade>();
+		Funcionalidade funcionalidade= new Funcionalidade();
 		try {
 			Criteria criteria = sessao.createCriteria(Funcionalidade.class);
 			if(!descricao.equals("")){
 				criteria.add(Restrictions.like("descricao", "%" + descricao + "%"));
 			}
-			listaFuncionalidades = (List<Funcionalidade>) criteria.list();
+			funcionalidade = (Funcionalidade) criteria.uniqueResult();
 		} catch (RuntimeException runtimeException) {
 			throw runtimeException;
 		} finally {
 			sessao.close();
 		}
-		return listaFuncionalidades;
+		return funcionalidade;
 	}
 
 }

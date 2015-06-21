@@ -6,7 +6,6 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<h:head>
-		<meta charset="UTF-8" />
 		<title>Projeto MIC</title>
 	
 		<link rel="stylesheet" type="text/css" href="style.css" />
@@ -21,21 +20,28 @@
 				<div class="logo">
 					<img src="logo.png" /> | Projeto MIC 
 				</div>
+				<div class="user">
+					Você está logado(a) como: <b><p:outputLabel value="#{usuarioLogado.nomeUsuario}" /></b>
+				</div>
 			</div>
 			<div class="message">
 				<p:growl id="mensagem" />
 			</div>
 		</div>
-		<div class="menu">
-			<ul>
-				<li><a href="index.xhtml"> Página Inicial </a></li>
-				<li><a href="horario.xhtml"> Horários </a></li>
-				<li><a href="funcionalidade.xhtml"> Funcionalidades </a></li>
-				<li><a href="curso.xhtml"> Cursos </a></li>
-				<li><a href="professor.xhtml"> Professores </a></li>
-				<li><a href="turma.xhtml"> Turmas </a></li>
-				<li><a href="inicio.xhtml"> Sair </a></li>
-			</ul>
-		</div>
+		<h:form id="formularioMenu">
+			<div class="menu">
+				<ul>
+					<li><a href="index.xhtml"> Página Inicial </a></li>
+					<li><p:commandLink action="#{usuarioBean.acessarTela}" value="Usuários"></p:commandLink></li>
+					<li><p:commandLink action="#{funcionalidadeBean.acessarTela}" value="Funcionalidades"></p:commandLink></li>
+					<li><p:commandLink action="#{navegacaoBean.acessarTela}" value="Navegações"></p:commandLink></li>
+					<li><p:commandLink action="#{horarioBean.acessarTela}" value="Horários"></p:commandLink></li>
+					<li><p:commandLink action="#{cursoBean.acessarTela}" value="Cursos"></p:commandLink></li>
+					<li><p:commandLink action="#{professorBean.acessarTela}" value="Professores"></p:commandLink></li>
+					<li><p:commandLink action="#{turmaBean.acessarTela}" value="Turmas"></p:commandLink></li>
+					<li><p:commandLink action="#{loginBean.logout}" value="Sair"></p:commandLink></li>
+				</ul>
+			</div>
+		</h:form>
 	</h:body>
 </html>

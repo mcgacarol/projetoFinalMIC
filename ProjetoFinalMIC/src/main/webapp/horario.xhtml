@@ -28,7 +28,7 @@
 		
 				<h:panelGrid columns="4">
 					<p:commandButton value="Salvar" actionListener="#{horarioBean.salvar}" update=":formulario:mensagem :formulario:painelDados :formulario:tabela" />
-					<p:commandButton value="Limpar" actionListener="#{horarioBean.iniciar}" update=":formulario:mensagem :formulario:painelDados"/>
+					<p:commandButton value="Limpar" actionListener="#{horarioBean.iniciar}" update="@form" process="@this"/>
 					<p:commandButton value="Excluir" actionListener="#{horarioBean.excluir}" update=":formulario:mensagem :formulario:painelDados :formulario:tabela"  />
 					<p:commandButton value="Voltar" action="index.xhtml"/>
 				</h:panelGrid>
